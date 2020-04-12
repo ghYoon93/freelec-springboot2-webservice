@@ -1,5 +1,6 @@
 package com.yghee.book.springboot.domain.posts;
 
+import com.yghee.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter  // 6  클래스 내 모든 필드의 Getter 메소드 생성
 @NoArgsConstructor  // 5 기본 생성자 추가
 @Entity  // 1  테이블과 링크될 클래스 camelCase-> underscore_naming
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id  // 2 해당 테이블의 PK 필드
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // 3 PK 생성 규칙 (auto_increment)
