@@ -25,7 +25,8 @@ public class IndexController {
 
 
         if(user != null) {  // 세션에 저장된 값이 있을 때만 model에 userName으로 등록
-            model.addAttribute("userName", user.getName());
+            System.out.println("세션 유저 명:" +user.getName());
+            model.addAttribute("memName", user.getName());
         }
         return "index";
     }

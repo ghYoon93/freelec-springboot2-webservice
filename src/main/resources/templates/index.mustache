@@ -6,13 +6,14 @@
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
 
-            {{#userName}} <!--1 userName이 있으면-->
-                Logged in as: <span id="user">{{userName}}</span>
+            {{#memName}} <!--1 userName이 있으면-->
+                Logged in as: <span id="user">{{memName}}</span>
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a>  <!-- 2 시큐리티에서 제공하는 기본 로그아웃 url controller 필요 없음-->
-            {{/userName}}
-            {{^userName}}  <!-- 3 userName이 없다면-->
+            {{/memName}}
+            {{^memName}}  <!-- 3 userName이 없다면-->
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a> <!-- 3 시큐리티에서 제공하는 기본 로그인 url-->
-            {{/userName}}
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+            {{/memName}}
         </div>
     </div>
     <br>
