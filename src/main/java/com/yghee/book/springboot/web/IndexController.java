@@ -1,5 +1,6 @@
 package com.yghee.book.springboot.web;
 
+import com.yghee.book.springboot.config.auth.LoginUser;
 import com.yghee.book.springboot.config.auth.dto.SessionUser;
 import com.yghee.book.springboot.service.posts.PostsService;
 import com.yghee.book.springboot.web.dto.PostsResponseDto;
@@ -19,10 +20,10 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {  // 서버 템플릿 엔진에서 사용할 수 있는 객체 저장
+    public String index(Model model, @LoginUser SessionUser user) {  // 서버 템플릿 엔진에서 사용할 수 있는 객체 저장
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user"); // CustomOAuth2UserService에서 로그인 성공 시 세션에 SessionUser를 저장하도록 구성 즉, 로그인 성공시 세션에서 값을 가져올 수 있음
+
         if(user != null) {  // 세션에 저장된 값이 있을 때만 model에 userName으로 등록
             model.addAttribute("userName", user.getName());
         }
