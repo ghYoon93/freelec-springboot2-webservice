@@ -21,7 +21,7 @@ public class ProfileControllerUnitTest {
         //when
         String profile = controller.profile();
 
-        //then
+        //thenS
         assertThat(profile).isEqualTo(expectedProfile);
     }
 
