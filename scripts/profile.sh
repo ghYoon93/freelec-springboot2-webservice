@@ -26,7 +26,7 @@ function find_idle_profile()
 function find_idle_port()
 {
     IDLE_PROFILE=$(find_idle_profile)
-
+    echo "> idle_profile: ${IDLE_PROFILE}"
     if [ ${IDLE_PROFILE} == real1 ]
     then
       echo "8081"
