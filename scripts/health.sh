@@ -15,11 +15,11 @@ sleep 10
 for RETRY_COUNT in {1..10}
 do
   RESPONSE=$(curl -s http://localhost:${IDLE_PORT}/profile)
-  UP_COUNT=$(echo ${RESPONSE}|grep 'real'|wc -l)
+  UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -l)
 
   if [ ${UP_COUNT} -ge 1 ]
-  then
-      echo "> Health Check 성공"
+  then # $up_count >= 1 ("real" 문자열이 있는지 검증)
+      echo "> Health check 성공"
       switch_proxy
       break
   else
@@ -29,7 +29,7 @@ do
 
   if [ ${RETRY_COUNT} -eq 10 ]
   then
-    echo "> Health Check 실패. "
+    echo "> Health check 실패. "
     echo "> 엔진엑스에 연결하지 않고 배포를 종료합니다."
     exit 1
   fi
